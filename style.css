@@ -1,0 +1,149 @@
+* {
+    font-family:Tahoma
+}
+
+
+body {
+
+    //background:  url(background.gif);
+
+    background-color: aquamarine;
+    margin: 10px;
+    text-align: center;
+}
+
+button:hover {
+
+    //color: #336699;
+
+}
+
+
+
+.piece {
+
+    background-color: khaki;
+    width: 60px;
+    height: 60px;
+    margin: 10px;
+
+    border: none;
+    color: white;
+
+    text-align: center;
+    text-decoration: none;
+    font-size: 6px;
+    border-radius: 8px;
+
+}
+
+
+
+.piece:hover {
+    //background-color:cadetblue;
+}
+
+.memoryGame{
+    color: dodgerblue;
+
+}
+
+.pieceToGuess {
+    background-color: dodgerblue;
+    width: 60px;
+    height: 60px;
+    margin: 10px;
+
+    border: none;
+    color: white;
+
+    text-align: center;
+    text-decoration: none;
+    font-size: 6px;
+    border-radius: 8px;
+
+}
+
+.correctPiece {
+    background-color: lightgreen;
+    width: 60px;
+    height: 60px;
+    margin: 10px;
+
+    border: none;
+    color: white;
+
+    text-align: center;
+    text-decoration: none;
+    font-size: 6px;
+    border-radius: 8px;
+
+
+}
+
+.wrongPiece {
+
+    background-color: firebrick;
+    width: 60px;
+    height: 60px;
+    margin: 10px;
+
+    border: none;
+    color: white;
+
+    text-align: center;
+    text-decoration: none;
+    font-size: 6px;
+    border-radius: 8px;
+
+}
+
+.mainContainer {
+    padding: 50px;
+    //display:flex;
+    //flex-direction: row;
+    //justify-content: center;
+    //align-items: center;
+
+}
+
+#piecesSection{
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.itemContainer{
+
+
+}
+
+p {
+
+    display: inline;
+    margin: 10px;
+}
+
+span {
+    margin: 20px;
+}
+
+#naviSection{
+
+    position: -webkit-sticky; /* Safari */
+    position: sticky;
+    top: 0;
+    background-color: lightseagreen;
+    border: 2px solid #4CAF50;
+    margin:10px;
+
+}
+
+#highlightButton{
+    width: 100px;
+    height: 40px;
+    margin: 10px;
+
+}

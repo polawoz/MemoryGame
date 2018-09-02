@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Memory Game</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="icon" href="favicon.ico">
+</head>
+
+<script src="js/game.js"></script>
+<script src="js/view.js"></script>
+<script src="js/controller.js"></script>
+<body>
+<section id="mainContainer" class="mainContainer">
+
+    <section id="welcome">
+        <img src="color-star.png" width="15%" height="15%"></img>
+        <h1 class="memoryGame">MEMORY GAME</h1>
+        <button id="startButton" onclick="controller.openGame()">start</button>
+    </section>
+
+
+    <header id="header" style="display: none;">
+        <img src="color-star.png" width="10%" height="10%"></img>
+        <span><p>Current level: </p><p id="level">0</p></span>
+        <span><p>Number of pieces to guess: </p><p id="piecesToGuessNo">1</p></span>
+
+    </header>
+
+    <span id="gameStatus" style="display: none; font-style: italic;">before starting level</span>
+    <section id="naviSection" style="display: none;">
+        <span id="noOfPiecesSpan"><p>Number of pieces shown</p></span>
+        <span id="highlightTimeSpan"><p>Highlight time</p></span>
+    </section>
+
+    <section id="highlightButtonSec"></section>
+
+    <section id="piecesSection" style="display: none;"></section>
+
+
+</section>
+
+
+
+
+
+
+
+<!--<p>Current level: </p>
+<div id="currentLevel">start game</div>
+<p id="result"></p>
+<button onclick="controller.nextLevel()">Next level</button>-->
+
+
+
+
+</body>
+</html>
+
+
