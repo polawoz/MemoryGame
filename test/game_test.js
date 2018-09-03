@@ -1,46 +1,58 @@
 describe('Game', function () {
     it('should have 4 pieces after game start', function () {
+
+        //arrange
         var pieces;
-        //zwracam 4
+
+        //act
         game.startGame();
 
+        //assert
         pieces = game.getPieces();
-
         expect(pieces.length).toBe(4);
     });
 
     it('one pieces should be to guess after game start', function () {
+
+        //arrange
         var piecesToGuess;
+
+        //act
         game.startGame();
 
+        //assert
         piecesToGuess = game.getPiecesToGuess();
-
         expect(piecesToGuess.length).toBe(1);
     });
 
     it('should start game with configured number of pieces', function () {
+
+        //arrange
         var pieces,
             config = {
                 numberOfPieces: 6
             };
+        //act
         game.startGame(config);
 
+        //assert
         pieces = game.getPieces();
-
         expect(pieces.length).toBe(6);
     });
 
 
     it('should return correct piece info', function(){
 
+        //arrange
         var config = {
             numberOfPieces: 8
         };
         game.startGame(config);
-        var pieceToGuess = game.getPiecesToGuess()[0];
+        var pieceToGuess = game.getPiecesToGuess()[0],
+            result;
 
         //act
-        var result = game.choosePiece(pieceToGuess);
+        result = game.choosePiece(pieceToGuess);
 
         //assert
         expect(result).toBe("correct");
@@ -51,17 +63,18 @@ describe('Game', function () {
 
     it('should return wrong piece info double choice', function(){
 
+        //arrange
         var config = {
             numberOfPieces: 6
         };
         game.startGame(config);
-        var piecesToGuess = game.getPiecesToGuess();
+        var piecesToGuess = game.getPiecesToGuess(),
+        result;
 
 
         //act
-
         game.choosePiece(piecesToGuess[1]);
-        var result = game.choosePiece(piecesToGuess[1]);
+        result = game.choosePiece(piecesToGuess[1]);
 
         //assert
         expect(result).toBe("Wrong piece!");
@@ -72,6 +85,7 @@ describe('Game', function () {
 
     it('should return wrong piece info', function(){
 
+        //arrange
         var config = {
             numberOfPieces: 6
         };
@@ -83,7 +97,6 @@ describe('Game', function () {
 
 
         //act
-
         var result = game.choosePiece(pieces[1]);
 
         //assert
@@ -94,6 +107,7 @@ describe('Game', function () {
 
     it('should return level finished info', function(){
 
+        //arrange
         var config = {
             numberOfPieces: 6
         };
@@ -102,7 +116,6 @@ describe('Game', function () {
         game.choosePiece(piecesToGuess[0]);
 
         //act
-
         var result = game.choosePiece(piecesToGuess[1]);
 
         //assert
@@ -113,6 +126,7 @@ describe('Game', function () {
 
     it('should update level', function(){
 
+        //arrange
         var config = {
             numberOfPieces: 6
         };

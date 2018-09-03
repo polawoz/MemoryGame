@@ -1,7 +1,8 @@
+"use strict";
 var game = (function () {
 
     var initialNumberOfPieces = 4,
-        currentNumberOfPieces,
+        currentNumberOfPieces = 4,
         numberOfPiecesToGuess = 1,
         numberOfPiecesLeftToGuess = 1,
         piecesToGuess = [],
@@ -56,7 +57,7 @@ var game = (function () {
                 result = verifyChosenPiece(pieceId);
             }
 
-            if (piecesGuessed.length == piecesToGuess.length) {
+            if (piecesGuessed.length === piecesToGuess.length) {
                 result = "level completed!";
                 numberOfPiecesLeftToGuess = 0;
                 moveToNextLevel();
@@ -80,8 +81,6 @@ var game = (function () {
             }
             else {
                 result = "Wrong piece!";
-                //repeatLevel();
-
             }
 
             return result;
@@ -92,24 +91,8 @@ var game = (function () {
         moveToNextLevel = function () {
 
             currentNumberOfPieces = currentNumberOfPieces + 2;
-            /*            currentLevel=currentLevel+1;
-                        numberOfPiecesToGuess=numberOfPiecesToGuess+1;
-                        numberOfPiecesLeftToGuess=numberOfPiecesToGuess;
-                        piecesToGuess=[];
-                        piecesGuessed=[];
-                        generatePiecesToGuess();*/
 
         },
-
-        repeatLevel = function () {
-
-            /*            numberOfPiecesLeftToGuess=numberOfPiecesToGuess;
-                        piecesToGuess=[];
-                        piecesGuessed=[];
-                        generatePiecesToGuess();*/
-
-        },
-
 
         getCurrentNumberOfPieces = function () {
             return currentNumberOfPieces;
@@ -143,7 +126,6 @@ var game = (function () {
         'getLevel': getLevel,
         'getPiecesToGuess': getPiecesToGuess,
         'getNumberOfPiecesLeftToGuess': getNumberOfPiecesLeftToGuess,
-        'repeatLevel': repeatLevel,
         'getNumberOfPiecesToGuess': getNumberOfPiecesToGuess,
         'getCurrentNumberOfPieces': getCurrentNumberOfPieces
 

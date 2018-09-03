@@ -1,3 +1,4 @@
+"use strict";
 var controller = function () {
 
     var highlightTime = 2000,
@@ -5,20 +6,17 @@ var controller = function () {
         openGame = function () {
 
             view.showHeader();
-            view.showNaviSection();
-
-            startGame();
+            view.showNaviSection(setHighlightTime, setNumberOfPieces, startLevelFromHighlightButton);
+            view.renderPieces(game.getPieces(), choosePiece);
 
         },
         startGame = function (config) {
 
             game.startGame(config);
-            view.renderPieces(game.getPieces());
+            view.renderPieces(game.getPieces(), choosePiece);
         },
 
         startLevel = function () {
-
-
 
             view.updateResultSection("during level");
 
@@ -32,30 +30,34 @@ var controller = function () {
 
         },
 
-        choosePiece = function (pieceId) {
+        choosePiece = function (event) {
 
-            var currentPieces = game.getPieces();
+            var pieceId,
+                currentPieces,
+                result;
 
-            var result = game.choosePiece(pieceId);
+            pieceId = event.target.id;
 
-            if (result == "level completed!") {
+            currentPieces = game.getPieces();
+
+            result = game.choosePiece(pieceId);
+
+            if (result === "level completed!") {
                 view.changeCorrectPieceColor(pieceId);
                 view.updateResultSection(result);
                 setTimeout(nextLevel, 2000);
                 view.disableClicking(currentPieces);
-
             }
 
-            else if (result == "correct") {
+            else if (result === "correct") {
                 view.changeCorrectPieceColor(pieceId);
             }
 
-            else if (result == "Wrong piece!") {
+            else if (result === "Wrong piece!") {
                 view.changeWrongPieceColor(pieceId);
                 view.updateResultSection(result);
                 setTimeout(repeatLevel, 2000);
                 view.disableClicking(game.getPieces());
-
             }
         },
 
@@ -63,34 +65,56 @@ var controller = function () {
 
             var config = {
                 numberOfPieces: game.getCurrentNumberOfPieces()
-            }
+            };
 
             startGame(config);
             startLevel();
-
         },
 
         nextLevel = function () {
 
-            var config = {
-                numberOfPieces: game.getCurrentNumberOfPieces()
+            var currentNumberOfPieces = game.getCurrentNumberOfPieces();
+
+            if(currentNumberOfPieces>=100){
+                view.updateResultSection("all levels completed!");
+            } else{
+
+                var config = {
+                    numberOfPieces: currentNumberOfPieces
+                };
+
+                startGame(config);
+                view.updateLevelSection(game.getLevel());
+                view.updateNumberOfPiecesToGuessInfo(game.getNumberOfPiecesToGuess());
+                view.updateNumberOfPiecesShownInInput(game.getCurrentNumberOfPieces());
+                startLevel();
             }
-
-            startGame(config);
-            view.updateLevelSection(game.getLevel());
-            view.updateNumberOfPiecesToGuessInfo(game.getNumberOfPiecesToGuess());
-            view.updateNumberOfPiecesShownInInput(game.getCurrentNumberOfPieces());
-            startLevel();
-
         },
 
-
-        setNumberOfPieces = function (number) {
+        startLevelFromHighlightButton = function(){
 
             var config = {
-                numberOfPieces: number
-            }
+                numberOfPieces: view.getNumberOfPieces()
+            };
+
+            game.startGame(config);
+            view.renderPieces(game.getPieces(), choosePiece);
+
+            startLevel();
+
+         },
+
+
+        setNumberOfPieces = function (event) {
+
+            var config = {
+                numberOfPieces: event.target.value
+            };
             startGame(config);
+
+            game.startGame(config);
+            view.renderPieces(game.getPieces(), choosePiece);
+
             view.updateResultSection("before starting level");
             view.updateLevelSection(game.getLevel());
             view.updateNumberOfPiecesToGuessInfo(game.getNumberOfPiecesToGuess());
@@ -98,8 +122,8 @@ var controller = function () {
         },
 
 
-        setHighlightTime = function (milliseconds) {
-            highlightTime = milliseconds;
+        setHighlightTime = function (event) {
+            highlightTime = event.target.value*1000;
         };
 
 
@@ -110,6 +134,7 @@ var controller = function () {
         'nextLevel': nextLevel,
         'setNumberOfPieces': setNumberOfPieces,
         'setHighlightTime': setHighlightTime,
-        'startLevel': startLevel
+        'startLevel': startLevel,
+        'startLevelFromHighlightButton': startLevelFromHighlightButton
     }
 }();
