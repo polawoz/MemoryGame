@@ -2,6 +2,29 @@
     font-family:Tahoma
 }
 
+.fadeOut{
+    //display:none;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s 1s, opacity 1s linear;
+}
+.fadeIn{
+    visibility: visible;
+    opacity: 1;
+    transition: opacity 1s linear;
+}
+
+.noneDisplay{
+    display: none;
+}
+
+.displayBlock{
+    display: block;
+}
+
+.italic{
+    font-style: italic;
+}
 
 body {
 

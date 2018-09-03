@@ -4,10 +4,15 @@ var controller = function () {
     var highlightTime = 2000,
 
         openGame = function () {
+            view.fadeOutScreen();
+            setTimeout(function(){
+                view.showHeader();
+                view.showNaviSection(setHighlightTime, setNumberOfPieces, startLevelFromHighlightButton);
+                view.renderPieces(game.getPieces(), choosePiece);
+                view.fadeInScreen();
+            },1000);
 
-            view.showHeader();
-            view.showNaviSection(setHighlightTime, setNumberOfPieces, startLevelFromHighlightButton);
-            view.renderPieces(game.getPieces(), choosePiece);
+
 
         },
         startGame = function (config) {

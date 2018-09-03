@@ -40,6 +40,22 @@ describe('Game', function () {
         expect(pieces.length).toBe(6);
     });
 
+    it('should generate pieces to guess after starting game with config', function () {
+
+        //arrange
+        var piecesToGuess,
+            config = {
+                numberOfPieces: 6
+            };
+        game.startGame(config);
+
+        //act
+        piecesToGuess = game.getPiecesToGuess();
+
+        //assert
+        expect(piecesToGuess.length).toBe(2);
+    });
+
 
     it('should return correct piece info', function(){
 

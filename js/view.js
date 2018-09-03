@@ -183,6 +183,19 @@ var view = (function () {
             header.style.display="block";
         },
 
+        fadeOutScreen=function(){
+            var mainContainer = document.getElementById("mainContainer");
+            mainContainer.classList.add("fadeOut");
+
+        },
+
+        fadeInScreen=function(){
+            var mainContainer = document.getElementById("mainContainer");
+            mainContainer.classList.remove("fadeOut");
+            mainContainer.classList.add("fadeIn");
+
+        },
+
         showNaviSection = function (setHighlightTimeCb, setNumberOfPiecesCb, startLevelFromHighlightButtonCb) {
 
             var naviSection,
@@ -190,17 +203,22 @@ var view = (function () {
                 welcomeSection,
                 gameStatus;
 
+            welcomeSection = document.getElementById("welcome");
+            welcomeSection.classList.add("noneDisplay");
+
+
             naviSection = document.getElementById("naviSection");
-            naviSection.style.display="block";
+            naviSection.classList.remove("noneDisplay");
+            naviSection.classList.add("displayBlock");
 
             piecesSection = document.getElementById("piecesSection");
-            piecesSection.style.display="block";
-
-            welcomeSection = document.getElementById("welcome");
-            welcomeSection.style.display="none";
+            piecesSection.classList.remove("noneDisplay");
+            piecesSection.classList.add("displayBlock");
 
             gameStatus= document.getElementById("gameStatus");
-            gameStatus.style.display="block";
+            gameStatus.classList.remove("noneDisplay");
+            gameStatus.classList.add("displayBlock");
+
 
             showChangeNumberOfPiecesInput(setNumberOfPiecesCb);
             showChangeTimeSection(setHighlightTimeCb);
@@ -245,7 +263,9 @@ var view = (function () {
         'updateNumberOfPiecesToGuessInfo': updateNumberOfPiecesToGuessInfo,
         'updateNumberOfPiecesShownInInput': updateNumberOfPiecesShownInInput,
         'showHeader': showHeader,
-        'getNumberOfPieces': getNumberOfPieces
+        'getNumberOfPieces': getNumberOfPieces,
+        'fadeOutScreen': fadeOutScreen,
+        'fadeInScreen': fadeInScreen
 
     }
 
